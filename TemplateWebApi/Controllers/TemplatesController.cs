@@ -11,7 +11,14 @@ namespace TemplateWebApi.Controllers
     [ApiController]
     public class TemplatesController : ControllerBase
     {
-        private readonly MockTemplateRepo _repository = new MockTemplateRepo();
+        private readonly InterfaceTemplate _repository;
+
+        public TemplatesController(InterfaceTemplate repository)
+        {
+            _repository = repository;
+        }
+
+        //private readonly MockTemplateRepo _repository = new MockTemplateRepo();
         //GET api/commands
         [HttpGet]
         public ActionResult<IEnumerable<Template>> GetAllCommands()
